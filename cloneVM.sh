@@ -15,7 +15,7 @@ elif [[ "$1" == "help" ]];then
     echo "~DeleteVM~"
     echo "sh cloneVM.sh del \${Vmid}"
     echo "~Chcek VM List~"
-    echo "sh cloneVM.sh help"
+    echo "sh cloneVM.sh check"
 
 elif [[ "$1" == "check" ]];then
     vim-cmd vmsvc/getallvms
