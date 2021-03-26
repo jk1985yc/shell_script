@@ -30,7 +30,7 @@ elif [[ "$1" == "del" ]];then
 
     fi
 else
-    mkdir $CLONE_VM
+    mkdir $DATA_PATH/$CLONE_VM
     vmkfstools -d thin -i $DATA_PATH/$CLONE_SRC/$CLONE_SRC.vmdk $DATA_PATH/$CLONE_VM/$CLONE_VM.vmdk
     cp $DATA_PATH/$CLONE_SRC/$CLONE_SRC.vmx $DATA_PATH/$CLONE_VM/$CLONE_VM.vmx
     sed -i s/$CLONE_SRC/$CLONE_VM/g $DATA_PATH/$CLONE_VM/$CLONE_VM.vmx
