@@ -35,5 +35,5 @@ else
     cp $DATA_PATH/$CLONE_SRC/$CLONE_SRC.vmx $DATA_PATH/$CLONE_VM/$CLONE_VM.vmx
     sed -i s/$CLONE_SRC/$CLONE_VM/g $DATA_PATH/$CLONE_VM/$CLONE_VM.vmx
     vim-cmd solo/registervm $DATA_PATH/$CLONE_VM/$CLONE_VM.vmx $CLONE_VM
-    echo else
+    echo "Done"
 fi
