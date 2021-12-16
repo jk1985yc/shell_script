@@ -1,7 +1,7 @@
 #!/bin/bash
 DATE=`date '+%Y%m%d-%H:%M'`
 
-PROJECT=
+PROJECT=$1
 SRC=
 DEST=
 
