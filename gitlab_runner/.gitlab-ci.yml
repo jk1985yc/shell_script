@@ -1,0 +1,43 @@
+stages:
+  - buildApk
+  - deployApk
+
+BuildApk:
+  stage: buildApk
+  image: reactnativecommunity/react-native-android:latest
+  cache:
+    untracked: true
+    paths:
+      - node_modules/
+  before_script:
+    - yarn
+    - echo '$GOOGLE_SERVICES_JSON' > android/app/google-services.json
+  script:
+    - chmod -R 777 android
+    - cd android
+    - ./gradlew assembleRelease
+  only:
+    - master
+  artifacts:
+    name: 'apkFile'
+    paths:
+      - ./android/app/build/outputs/apk/release/
+
+DeployApk:
+  stage: deployApk
+  image: docker:latest
+  before_script:
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo "$SSH_CONFIG" > ~/.ssh/config
+    - chmod 600 ~/.ssh/config
+  script:
+    - scp ./android/app/build/outputs/apk/release/app-release.apk deploy:/home/docker/Nginx/www/
+  dependencies:
+    - BuildApk
+  only:
+    - master
