@@ -15,7 +15,8 @@ ln /home/docker /root/docker -s
 
 curl -sSL https://get.docker.com/ | sh
 
-curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
+#curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/bin/docker-compose
 
 sudo chmod +x /usr/bin/docker-compose
 
