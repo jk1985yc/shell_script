@@ -1,3 +1,5 @@
+#!/bin/bash
+
 adduser -g100 docker
 
 mkdir -p /home/docker
