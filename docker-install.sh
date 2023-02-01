@@ -1,5 +1,6 @@
 adduser -g100 docker
 
+mkdir -p /home/docker
 ln /home/docker /root/docker -s
 
 # sudo yum -y remove docker docker-common container-selinux
